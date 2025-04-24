@@ -76,6 +76,7 @@ class HttpTest extends TestCase {
 		self::assertGreaterThan(count($options), count($actualOptions));
 	}
 
+	/** @runInSeparateProcess */
 	public function testAll() {
 		$http = new Http(
 			[],

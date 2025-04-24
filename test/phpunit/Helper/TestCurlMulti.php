@@ -17,8 +17,15 @@ class TestCurlMulti extends CurlMulti {
 		}
 
 		foreach($this->curlHandleArray as $ch) {
-			$stillRunning += ResponseSimulator::sendChunk($ch);
+			$inc = ResponseSimulator::sendChunk($ch);
+			if($inc > 0) {
+				$stillRunning += $inc;
+			}
+			elseif($stillRunning > 0) {
+				$stillRunning--;
+			}
 		}
+
 		return CURLM_OK;
 	}
 }

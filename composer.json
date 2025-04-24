@@ -9,7 +9,7 @@
 		"ext-curl": "*",
 		"ext-json": "*",
 		"phpgt/async": "^1.0",
-		"phpgt/promise": "^2.2.3",
+		"phpgt/promise": "^2.3",
 		"phpgt/http": "^1.3",
 		"phpgt/curl": "^3.1.1",
 		"phpgt/json": "^1.2",
