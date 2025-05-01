@@ -56,8 +56,8 @@ class RequestResolver {
 		UriInterface $uri,
 		array $curlOptArray,
 		Deferred $deferred,
-		string $integrity = null,
-		Controller $signal = null,
+		?string $integrity = null,
+		?Controller $signal = null,
 	):void {
 		/** @var CurlInterface $curl */
 		$curl = new $this->curlClass($uri);
@@ -101,54 +101,70 @@ class RequestResolver {
 		$totalActive = 0;
 
 		foreach($this->curlMultiList as $i => $curlMulti) {
-			$active = 0;
-
-// 1) This first do-while loop initiates all underlying curl handles, but on
-// slow networks, this might not be enough to download all responses...
-			do {
-				$status = $curlMulti->exec($active);
-			}
-			while($status === CURLM_CALL_MULTI_PERFORM);
-
-			if($status !== CURLM_OK) {
-				$errNo = curl_multi_errno($curlMulti->getHandle());
-				$errString = curl_multi_strerror($errNo);
-				throw new CurlException($errString);
-			}
-
-			$totalActive += $active;
-
-			if($active === 0) {
-				$response = $this->responseList[$i] ?? null;
-				$response->endDeferredResponse(
-					$this->integrityList[$i]
-				);
-				if($this->deferredList[$i]) {
-					$this->deferredList[$i]->resolve($response);
-				}
-
-				$response = null;
-				$this->deferredList[$i] = null;
-			}
-			else {
-				while($active && $status === CURLM_OK) {
-// 2) We must wait for network activity, because there may be no activity
-// between us starting the request and checking the response, especially with
-// slow servers.
-					if($curlMulti->select() !== -1) {
-						do {
-							$status = $curlMulti->exec($active);
-						}
-						while($status === CURLM_CALL_MULTI_PERFORM);
-					}
-				}
-			}
+			$this->processCurlMulti($curlMulti, $i, $totalActive);
 		}
 
 		if($totalActive === 0) {
 			$this->loop->halt();
 		}
 	}
+
+	private function processCurlMulti(
+		CurlMultiInterface $curlMulti,
+		int $index,
+		int &$totalActive,
+	):void {
+		$active = 0;
+
+		$this->executeCurlMultiLoop($curlMulti, $active);
+
+		if($active === 0) {
+			$this->handleCompletedCurlMulti($index);
+		}
+		else {
+			$totalActive += $active;
+		}
+	}
+
+	private function executeCurlMultiLoop(
+		CurlMultiInterface $curlMulti,
+		int &$active,
+	):void {
+		do {
+			$status = $curlMulti->exec($active);
+		}
+		while($status === CURLM_CALL_MULTI_PERFORM);
+
+		if($status !== CURLM_OK) {
+			$this->handleCurlMultiError($curlMulti);
+		}
+	}
+
+	private function handleCurlMultiError(CurlMultiInterface $curlMulti):void {
+		$errNo = curl_multi_errno($curlMulti->getHandle());
+		$errString = curl_multi_strerror($errNo);
+		throw new CurlException($errString);
+	}
+
+	private function handleCompletedCurlMulti(int $index):void {
+		$response = $this->responseList[$index] ?? null;
+
+		if($response) {
+			$response->endDeferredResponse($this->integrityList[$index]);
+
+			if($this->deferredList[$index]) {
+				$this->deferredList[$index]->resolve($response);
+			}
+
+			$this->cleanupCompletedRequestData($index);
+		}
+	}
+
+	private function cleanupCompletedRequestData(int $index):void {
+		$this->responseList[$index] = null;
+		$this->deferredList[$index] = null;
+	}
+
 
 	private function writeHeader(
 		CurlHandle|CurlInterface $ch,
