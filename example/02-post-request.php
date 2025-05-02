@@ -23,9 +23,6 @@ $http->fetch("https://postman-echo.com/post", [
 // All of the request parameters can be passed directly here, or alternatively
 // the fetch() function can take a PSR-7 RequestInterface object.
 	"method" => "POST",
-	"headers" => [
-		"Content-Type" => "application/x-www-form-urlencoded",
-	],
 	"body" => $formData,
 ])
 	->then(function(Response $response) {
