@@ -77,3 +77,9 @@ For more extensive examples, check out the code in the [example directory](/exam
 
 [fetch-standard]: https://fetch.spec.whatwg.org/
 [fetch-js]: https://developer.mozilla.org/en/docs/Web/API/Fetch_API
+
+### Proudly sponsored by
+
+[JetBrains Open Source sponsorship program](https://www.jetbrains.com/community/opensource/)
+
+[![JetBrains logo.](https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg)](https://www.jetbrains.com/community/opensource/)
