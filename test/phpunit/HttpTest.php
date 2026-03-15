@@ -1,14 +1,14 @@
 <?php
-namespace Gt\Fetch\Test;
+namespace GT\Fetch\Test;
 
-use Gt\Fetch\FetchException;
-use Gt\Fetch\Http;
-use Gt\Fetch\Test\Helper\ResponseSimulator;
-use Gt\Fetch\Test\Helper\TestCurl;
-use Gt\Fetch\Test\Helper\TestCurlMulti;
-use Gt\Http\Request;
-use Gt\Http\Response;
-use Gt\Http\Uri;
+use GT\Fetch\FetchException;
+use GT\Fetch\Http;
+use GT\Fetch\Test\Helper\ResponseSimulator;
+use GT\Fetch\Test\Helper\TestCurl;
+use GT\Fetch\Test\Helper\TestCurlMulti;
+use GT\Http\Request;
+use GT\Http\Response;
+use GT\Http\Uri;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\UriInterface;
 use Throwable;

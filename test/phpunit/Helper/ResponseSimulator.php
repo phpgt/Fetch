@@ -1,7 +1,7 @@
 <?php
-namespace Gt\Fetch\Test\Helper;
+namespace GT\Fetch\Test\Helper;
 
-use Gt\Curl\Curl;
+use GT\Curl\Curl;
 
 class ResponseSimulator {
 	const RANDOM_BODY_WORDS = ["pursuit","forest","gravel","timber","wonder","eject","slogan","monkey","construct","earthquake","respect","publish","forward","circle","summer","define","highlight","refuse","salon","theater","lily","earwax","variant","account","resource"];

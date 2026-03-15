@@ -27,7 +27,10 @@
 		"psr-4": {
 			"GT\\Fetch\\": "./src",
 			"Gt\\Fetch\\": "./src"
-		}
+		},
+		"files": [
+			"namespace-aliases.php"
+		]
 	},
 
 	"autoload-dev": {

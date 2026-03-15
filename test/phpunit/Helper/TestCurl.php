@@ -1,7 +1,7 @@
 <?php
-namespace Gt\Fetch\Test\Helper;
+namespace GT\Fetch\Test\Helper;
 
-use Gt\Curl\Curl;
+use GT\Curl\Curl;
 
 class TestCurl extends Curl {
 	protected string $id;
