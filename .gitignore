@@ -1,5 +1,3 @@
 /vendor
 /test/unit/_coverage
 /.idea
-# Local wiki symlink
-docs
