@@ -38,6 +38,7 @@ jobs:
         with:
           name: build-artifact-${{ matrix.php }}
           path: /tmp/github-actions
+          retention-days: 1
 
   phpunit:
     runs-on: ubuntu-latest
@@ -73,6 +74,7 @@ jobs:
         with:
           name: code-coverage-${{ matrix.php }}-${{ github.run_number }}
           path: _coverage
+          retention-days: 1
 
   coverage:
     runs-on: ubuntu-latest
@@ -167,21 +169,3 @@ jobs:
           php_version: ${{ matrix.php }}
           path: src/
           standard: phpcs.xml
-
-  remove_old_artifacts:
-    runs-on: ubuntu-latest
-
-    permissions:
-      actions: write
-
-    steps:
-      - name: Remove old artifacts for prior workflow runs on this repository
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api "/repos/${{ github.repository }}/actions/artifacts" | jq ".artifacts[] | select(.name | startswith(\"build-artifact\")) | .id" > artifact-id-list.txt
-          while read id
-          do
-            echo -n "Deleting artifact ID $id ... "
-            gh api --method DELETE /repos/${{ github.repository }}/actions/artifacts/$id && echo "Done"
-          done <artifact-id-list.txt
