@@ -5,7 +5,7 @@
 	"license": "MIT",
 
 	"require": {
-		"php": ">=8.3",
+		"php": ">=8.4",
 		"ext-curl": "*",
 		"ext-json": "*",
 		"phpgt/async": "^1.0",
@@ -25,13 +25,14 @@
 
 	"autoload": {
 		"psr-4": {
+			"GT\\Fetch\\": "./src",
 			"Gt\\Fetch\\": "./src"
 		}
 	},
 
 	"autoload-dev": {
 		"psr-4": {
-			"Gt\\Fetch\\Test\\": "./test/phpunit"
+			"GT\\Fetch\\Test\\": "./test/phpunit"
 		}
 	},
 
