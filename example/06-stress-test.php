@@ -7,9 +7,11 @@ use Gt\Fetch\Http;
 use Gt\Http\Response;
 
 const DEFAULT_URL = "http://127.0.0.1:8080/?type=big-page&size-kb=512&delay-ms=25&speed-kbps=2048";
-const DEFAULT_START = 100;
-const DEFAULT_STEP = 100;
+const DEFAULT_START = 10;
+const DEFAULT_STEP = 10;
 const DEFAULT_MAX = 1000;
+
+ini_set("memory_limit", "2G");
 
 if(in_array("--help", $argv, true) || in_array("-h", $argv, true)) {
 	printf(<<<TEXT
@@ -114,12 +116,13 @@ for($concurrency = $start; $concurrency <= $max; $concurrency += $step) {
 		: 0;
 
 	printf(
-		"Concurrency %4d | ok %4d | errors %4d | %.3fs | %.2f req/s\n",
+		"Concurrency %4d | ok %4d | errors %4d | %.3fs | %.2f req/s | memory %4d MiB\n",
 		$concurrency,
 		$successCount,
 		$errorCount,
 		$durationSeconds,
-		$requestsPerSecond
+		$requestsPerSecond,
+		memory_get_usage(true) / 1024 / 1024,
 	);
 
 	if($statusCounts) {
