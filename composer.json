@@ -5,7 +5,7 @@
 	"license": "MIT",
 
 	"require": {
-		"php": ">=8.3",
+		"php": ">=8.4",
 		"ext-curl": "*",
 		"ext-json": "*",
 		"phpgt/async": "^1.0",
@@ -41,6 +41,20 @@
 			"email": "greg.bowler@g105b.com"
 		}
 	],
+
+	"scripts": {
+		"phpunit": "vendor/bin/phpunit --configuration phpunit.xml",
+		"phpunit:coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --configuration phpunit.xml --coverage-text",
+		"phpstan": "vendor/bin/phpstan analyse --level 6 src",
+		"phpcs": "vendor/bin/phpcs src --standard=phpcs.xml",
+		"phpmd": "vendor/bin/phpmd src/ text phpmd.xml",
+		"test": [
+			"@phpunit",
+			"@phpstan",
+			"@phpcs",
+			"@phpmd"
+		]
+	},
 
 	"keywords": [
 		"http-client",
