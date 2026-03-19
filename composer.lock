@@ -204,16 +204,16 @@
         },
         {
             "name": "phpgt/curl",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpgt/Curl.git",
-                "reference": "cbeb514a700253a94200b3e91107f1fb0bb32b03"
+                "reference": "125cc2d2eef8656913c13dd11fb451115dc5de9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpgt/Curl/zipball/cbeb514a700253a94200b3e91107f1fb0bb32b03",
-                "reference": "cbeb514a700253a94200b3e91107f1fb0bb32b03",
+                "url": "https://api.github.com/repos/phpgt/Curl/zipball/125cc2d2eef8656913c13dd11fb451115dc5de9f",
+                "reference": "125cc2d2eef8656913c13dd11fb451115dc5de9f",
                 "shasum": ""
             },
             "require": {
@@ -223,14 +223,15 @@
                 "phpgt/json": "^2.2"
             },
             "require-dev": {
-                "phpmd/phpmd": "^2.13",
+                "phpmd/phpmd": "^2.15",
                 "phpstan/phpstan": "^2.1",
-                "phpunit/phpunit": "^10.0",
-                "squizlabs/php_codesniffer": "^3.7"
+                "phpunit/phpunit": "^12.5",
+                "squizlabs/php_codesniffer": "^4.0"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
+                    "GT\\Curl\\": "./src",
                     "Gt\\Curl\\": "./src"
                 }
             },
@@ -253,7 +254,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpgt/Curl/issues",
-                "source": "https://github.com/phpgt/Curl/tree/v3.2.0"
+                "source": "https://github.com/phpgt/Curl/tree/v3.2.1"
             },
             "funding": [
                 {
@@ -261,7 +262,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-12-09T22:55:13+00:00"
+            "time": "2026-03-18T22:36:08+00:00"
         },
         {
             "name": "phpgt/dataobject",
