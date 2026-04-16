@@ -50,7 +50,7 @@ class RequestResolver {
 	 * provided hash as Subresource Identity (SRI).
 	 * The optional Controller $signal is used internally by curl to provide
 	 * an abort signal.
-	 * @param array<int, int|string> $curlOptArray
+	 * @param array<int, mixed> $curlOptArray
 	 */
 	public function add(
 		UriInterface $uri,

@@ -24,7 +24,7 @@ class Http {
 		CURLOPT_USERAGENT => self::USER_AGENT,
 	];
 
-	/** @var array<int, int|string> */
+	/** @var array<int, mixed> */
 	public readonly array $curlOptions;
 	private readonly float $interval;
 	private RequestResolver $requestResolver;
@@ -33,7 +33,7 @@ class Http {
 	private Timer $timer;
 
 	/**
-	 * @param array<string, int|string> $curlOptions
+	 * @param array<int, mixed> $curlOptions
 	 */
 	public function __construct(
 		array $curlOptions = [],

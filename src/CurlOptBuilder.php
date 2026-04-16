@@ -14,12 +14,12 @@ use Psr\Http\Message\UriInterface;
  * @see https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Syntax
  */
 class CurlOptBuilder {
-	/** @var array<string, int|string> */
+	/** @var array<int, mixed> */
 	protected array $curlOptArray;
 	protected ?string $integrity;
 	protected ?Controller $signal;
 
-	/** @param array<string, int|string> $init */
+	/** @param array<string, mixed> $init */
 	public function __construct(
 		null|string|UriInterface|RequestInterface $input,
 		array $init = [],
@@ -41,7 +41,7 @@ class CurlOptBuilder {
 		}
 	}
 
-	/** @return array<string, int|string> */
+	/** @return array<int, mixed> */
 	public function asCurlOptArray():array {
 		return $this->curlOptArray;
 	}
