@@ -1,5 +1,5 @@
 <?php
-namespace Gt\Fetch;
+namespace GT\Fetch;
 
 use RuntimeException;
 

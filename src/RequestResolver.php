@@ -1,11 +1,11 @@
 <?php
-namespace Gt\Fetch;
+namespace GT\Fetch;
 
 use CurlHandle;
 use Gt\Async\Loop;
-use Gt\Curl\CurlException;
-use Gt\Curl\CurlInterface;
-use Gt\Curl\CurlMultiInterface;
+use GT\Curl\CurlException;
+use GT\Curl\CurlInterface;
+use GT\Curl\CurlMultiInterface;
 use Gt\Http\Header\Parser;
 use Gt\Http\Response;
 use Gt\Promise\Deferred;
@@ -50,7 +50,7 @@ class RequestResolver {
 	 * provided hash as Subresource Identity (SRI).
 	 * The optional Controller $signal is used internally by curl to provide
 	 * an abort signal.
-	 * @param array<int, int|string> $curlOptArray
+	 * @param array<int, mixed> $curlOptArray
 	 */
 	public function add(
 		UriInterface $uri,

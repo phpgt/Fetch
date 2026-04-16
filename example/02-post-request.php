@@ -1,10 +1,10 @@
 <?php
 require(implode(DIRECTORY_SEPARATOR, ["..", "vendor", "autoload.php"]));
 
-use Gt\Fetch\Http;
-use Gt\Http\FormData;
-use Gt\Http\Response;
-use Gt\Json\JsonObject;
+use GT\Fetch\Http;
+use GT\Http\FormData;
+use GT\Http\Response;
+use GT\Json\JsonObject;
 
 /*
  * This example uses postman-echo.com do test the request/response.

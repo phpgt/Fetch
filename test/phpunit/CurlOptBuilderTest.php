@@ -1,10 +1,10 @@
 <?php
-namespace Gt\Fetch\Test;
+namespace GT\Fetch\Test;
 
-use Gt\Fetch\AbortController;
-use Gt\Fetch\CurlOptBuilder;
-use Gt\Fetch\NotAvailableServerSideException;
-use Gt\Fetch\UnknownCurlOptException;
+use GT\Fetch\AbortController;
+use GT\Fetch\CurlOptBuilder;
+use GT\Fetch\NotAvailableServerSideException;
+use GT\Fetch\UnknownCurlOptException;
 use PHPUnit\Framework\TestCase;
 
 class CurlOptBuilderTest extends TestCase {

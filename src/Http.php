@@ -1,19 +1,17 @@
 <?php
-namespace Gt\Fetch;
+namespace GT\Fetch;
 
 use Gt\Async\Loop;
 use Gt\Async\Timer\PeriodicTimer;
 use Gt\Async\Timer\Timer;
-use Gt\Curl\Curl;
-use Gt\Curl\CurlMulti;
-use Gt\Fetch\Response\FetchResponse;
+use GT\Curl\Curl;
+use GT\Curl\CurlMulti;
 use Gt\Http\Response;
 use Gt\Http\Uri;
 use Gt\Promise\Deferred;
 use Gt\Promise\Promise;
 use Gt\Promise\PromiseInterface;
 use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
 
 class Http {
@@ -24,7 +22,7 @@ class Http {
 		CURLOPT_USERAGENT => self::USER_AGENT,
 	];
 
-	/** @var array<int, int|string> */
+	/** @var array<int, mixed> */
 	public readonly array $curlOptions;
 	private readonly float $interval;
 	private RequestResolver $requestResolver;
@@ -33,7 +31,7 @@ class Http {
 	private Timer $timer;
 
 	/**
-	 * @param array<string, int|string> $curlOptions
+	 * @param array<int, mixed> $curlOptions
 	 */
 	public function __construct(
 		array $curlOptions = [],
