@@ -1,9 +1,9 @@
 <?php
 require(implode(DIRECTORY_SEPARATOR, ["..", "vendor", "autoload.php"]));
 
-use Gt\Fetch\Http;
-use Gt\Http\Blob;
-use Gt\Http\Response;
+use GT\Fetch\Http;
+use GT\Http\Blob;
+use GT\Http\Response;
 
 /*
  * This example uses Cat-as-a-Service API to request a random photo of a cat.

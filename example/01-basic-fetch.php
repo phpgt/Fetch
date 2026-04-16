@@ -1,10 +1,10 @@
 <?php
 require(implode(DIRECTORY_SEPARATOR, ["..", "vendor", "autoload.php"]));
 
-use Gt\Fetch\Http;
-use Gt\Http\Response;
-use Gt\Json\JsonKvpObject;
-use Gt\Json\JsonPrimitive\JsonArrayPrimitive;
+use GT\Fetch\Http;
+use GT\Http\Response;
+use GT\Json\JsonKvpObject;
+use GT\Json\JsonPrimitive\JsonArrayPrimitive;
 
 $http = new Http();
 

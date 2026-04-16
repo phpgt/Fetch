@@ -1,8 +1,8 @@
 <?php
-namespace Gt\Fetch\Test\Helper;
+namespace GT\Fetch\Test\Helper;
 
-use Gt\Curl\CurlInterface;
-use Gt\Curl\CurlMulti;
+use GT\Curl\CurlInterface;
+use GT\Curl\CurlMulti;
 
 class TestCurlMulti extends CurlMulti {
 	protected array $curlHandleArray;

@@ -1,11 +1,12 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
 
 permissions:
   contents: read
   actions: read
-  id-token: none
 
 jobs:
   composer:
@@ -15,10 +16,10 @@ jobs:
         php: [ 8.4, 8.5 ]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Cache Composer dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: /tmp/composer-cache
           key: ${{ runner.os }}-${{ matrix.php }}-${{ hashFiles('**/composer.lock') }}
@@ -27,6 +28,7 @@ jobs:
         uses: php-actions/composer@v6
         with:
           php_version: ${{ matrix.php }}
+          php_extensions: pcntl
 
       - name: Archive build
         run: mkdir /tmp/github-actions/ && tar --exclude=".git" -cvf /tmp/github-actions/build.tar ./
@@ -72,6 +74,7 @@ jobs:
         with:
           name: code-coverage-${{ matrix.php }}-${{ github.run_number }}
           path: _coverage
+          retention-days: 1
 
   coverage:
     runs-on: ubuntu-latest
@@ -117,6 +120,8 @@ jobs:
         with:
           php_version: ${{ matrix.php }}
           path: src/
+          level: 6
+          memory_limit: 256M
 
   phpmd:
     runs-on: ubuntu-latest

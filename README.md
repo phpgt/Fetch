@@ -26,7 +26,7 @@ See also, the [JavaScript implementation][fetch-js] that ships as standard in al
 
 ```php
 <?php
-$http = new Gt\Fetch\Http();
+$http = new GT\Fetch\Http();
 
 // Rather than creating the request now, `fetch` returns a Promise, 
 // for later resolution with the BodyResponse.

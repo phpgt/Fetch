@@ -1,10 +1,10 @@
 <?php
-namespace Gt\Fetch;
+namespace GT\Fetch;
 
 use CURLFile;
-use Gt\Http\File;
-use Gt\Http\FormData;
-use Gt\Http\RequestMethod;
+use GT\Http\File;
+use GT\Http\FormData;
+use GT\Http\RequestMethod;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\UriInterface;
 

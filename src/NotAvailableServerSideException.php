@@ -1,4 +1,4 @@
 <?php
-namespace Gt\Fetch;
+namespace GT\Fetch;
 
 class NotAvailableServerSideException extends FetchException {}
