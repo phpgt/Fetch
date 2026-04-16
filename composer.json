@@ -35,7 +35,8 @@
 
 	"autoload-dev": {
 		"psr-4": {
-			"GT\\Fetch\\Test\\": "./test/phpunit"
+			"GT\\Fetch\\Test\\": "./test/phpunit",
+			"Gt\\Fetch\\Test\\": "./test/phpunit"
 		}
 	},
 
