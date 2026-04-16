@@ -6,14 +6,12 @@ use Gt\Async\Timer\PeriodicTimer;
 use Gt\Async\Timer\Timer;
 use Gt\Curl\Curl;
 use Gt\Curl\CurlMulti;
-use Gt\Fetch\Response\FetchResponse;
 use Gt\Http\Response;
 use Gt\Http\Uri;
 use Gt\Promise\Deferred;
 use Gt\Promise\Promise;
 use Gt\Promise\PromiseInterface;
 use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
 
 class Http {
