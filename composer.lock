@@ -204,16 +204,16 @@
         },
         {
             "name": "phpgt/curl",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpgt/Curl.git",
-                "reference": "125cc2d2eef8656913c13dd11fb451115dc5de9f"
+                "reference": "86338d0be868c775b62250357e8fba47b0dcf5fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpgt/Curl/zipball/125cc2d2eef8656913c13dd11fb451115dc5de9f",
-                "reference": "125cc2d2eef8656913c13dd11fb451115dc5de9f",
+                "url": "https://api.github.com/repos/phpgt/Curl/zipball/86338d0be868c775b62250357e8fba47b0dcf5fd",
+                "reference": "86338d0be868c775b62250357e8fba47b0dcf5fd",
                 "shasum": ""
             },
             "require": {
@@ -254,7 +254,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpgt/Curl/issues",
-                "source": "https://github.com/phpgt/Curl/tree/v3.2.1"
+                "source": "https://github.com/phpgt/Curl/tree/v3.2.2"
             },
             "funding": [
                 {
@@ -262,7 +262,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-18T22:36:08+00:00"
+            "time": "2026-04-19T15:25:00+00:00"
         },
         {
             "name": "phpgt/dataobject",
