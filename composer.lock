@@ -492,16 +492,16 @@
         },
         {
             "name": "phpgt/promise",
-            "version": "v2.4.0",
+            "version": "v2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpgt/Promise.git",
-                "reference": "a5cdc154f2aaf3478dd474470cd768d401cdaf91"
+                "reference": "bf781780866fe5c52d20c071740e07c59df4c1c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpgt/Promise/zipball/a5cdc154f2aaf3478dd474470cd768d401cdaf91",
-                "reference": "a5cdc154f2aaf3478dd474470cd768d401cdaf91",
+                "url": "https://api.github.com/repos/phpgt/Promise/zipball/bf781780866fe5c52d20c071740e07c59df4c1c0",
+                "reference": "bf781780866fe5c52d20c071740e07c59df4c1c0",
                 "shasum": ""
             },
             "require": {
@@ -516,6 +516,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
+                    "GT\\Promise\\": "./src",
                     "Gt\\Promise\\": "./src"
                 }
             },
@@ -537,15 +538,15 @@
             ],
             "support": {
                 "issues": "https://github.com/phpgt/Promise/issues",
-                "source": "https://github.com/phpgt/Promise/tree/v2.4.0"
+                "source": "https://github.com/phpgt/Promise/tree/v2.4.1"
             },
             "funding": [
                 {
-                    "url": "https://github.com/sponsors/PhpGt",
+                    "url": "https://github.com/sponsors/phpgt",
                     "type": "github"
                 }
             ],
-            "time": "2025-04-30T21:42:58+00:00"
+            "time": "2026-05-04T15:49:22+00:00"
         },
         {
             "name": "phpgt/propfunc",
