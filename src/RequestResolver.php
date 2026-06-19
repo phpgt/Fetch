@@ -24,6 +24,8 @@ class RequestResolver {
 	private array $headerList;
 	/** @var array<string|null> */
 	private array $integrityList;
+	/** @var array<int|null> */
+	private array $maxRedirectsList;
 	/** @var array<object|null> */
 	private array $signalList;
 
@@ -38,6 +40,7 @@ class RequestResolver {
 		$this->responseList = [];
 		$this->headerList = [];
 		$this->integrityList = [];
+		$this->maxRedirectsList = [];
 		$this->signalList = [];
 	}
 
@@ -92,6 +95,10 @@ class RequestResolver {
 		array_push($this->curlMultiList, $curlMulti);
 		array_push($this->deferredList, $deferred);
 		array_push($this->integrityList, $integrity);
+		array_push(
+			$this->maxRedirectsList,
+			$curlOptArray[CURLOPT_MAXREDIRS] ?? null
+		);
 		array_push($this->responseList, $bodyResponse);
 		array_push($this->headerList, "");
 		array_push($this->signalList, $signal);
@@ -198,7 +205,7 @@ class RequestResolver {
 		}
 
 		if(str_starts_with(strtolower($headerLine), "location: ")) {
-			if($ch->getInfo(CURLOPT_MAXREDIRS) === 0) {
+			if($this->maxRedirectsList[$i] === 0) {
 				throw new FetchException("Redirect is disallowed");
 			}
 		}
