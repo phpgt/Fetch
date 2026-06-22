@@ -75,8 +75,21 @@ class ResponseSimulator {
 	}
 
 	static public function sendChunk(CurlInterface $ch):int {
-// TODO: If the URL is test://should-redirect, send the redirect header here
 		$url = $ch->getInfo(CURLINFO_EFFECTIVE_URL);
+		if($url === "test://should-follow-redirect" && !self::$redirectAdded) {
+			self::$headerBuffer = [
+				"HTTP/1.1 303 See Other\r\n",
+				"Content-Type: text/html\r\n",
+				"Location: /redirected\r\n",
+				"\r\n",
+				"HTTP/1.1 200 OK\r\n",
+				"Content-Type: application/json\r\n",
+				"X-Final-Response: true\r\n",
+				"\r\n",
+			];
+			self::$bodyBuffer = "{}";
+			self::$redirectAdded = true;
+		}
 		if($url === "test://should-redirect") {
 			$locationRedirect = "Location: /redirected\r\n";
 			if(!self::$redirectAdded) {

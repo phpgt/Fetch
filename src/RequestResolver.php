@@ -180,6 +180,12 @@ class RequestResolver {
 		$i = $this->getIndex($ch);
 		$headerLine = trim($rawHeader);
 
+		if($this->isStartOfNewHeaderBlock($i, $headerLine)) {
+			$this->headerList[$i] = "";
+			$this->responseList[$i] = new Response();
+			$this->responseList[$i]->startDeferredResponse($this->curlList[$i]);
+		}
+
 // If $headerLine is empty, it represents the last line before the body starts.
 // HTTP headers always end on an empty line.
 // See https://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html
@@ -216,6 +222,11 @@ class RequestResolver {
 // return the number of bytes read. If this does not match the same number
 // that cURL sees, cURL will drop the connection.
 		return strlen($rawHeader);
+	}
+
+	private function isStartOfNewHeaderBlock(int $index, string $headerLine):bool {
+		return str_starts_with(strtolower($headerLine), "http/")
+			&& trim($this->headerList[$index]) !== "";
 	}
 
 	private function writeBody(CurlHandle|CurlInterface $ch, string $content):int {

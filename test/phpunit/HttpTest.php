@@ -149,6 +149,23 @@ class HttpTest extends TestCase {
 	}
 
 	/** @runInSeparateProcess */
+	public function testFollowedRedirectOnlyExposesFinalResponseHeaders():void {
+		$sut = new Http(
+			[],
+			0.01,
+			TestCurl::class,
+			TestCurlMulti::class
+		);
+
+		$response = $sut->awaitFetch("test://should-follow-redirect");
+
+		self::assertSame(200, $response->status);
+		self::assertSame("application/json", $response->getHeaderLine("Content-Type"));
+		self::assertSame("true", $response->getHeaderLine("X-Final-Response"));
+		self::assertSame("", $response->getHeaderLine("Location"));
+	}
+
+	/** @runInSeparateProcess */
 	public function testAwaitFetch():void {
 		$http = new Http(
 			[],
