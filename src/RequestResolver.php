@@ -2,13 +2,13 @@
 namespace GT\Fetch;
 
 use CurlHandle;
-use Gt\Async\Loop;
+use GT\Async\Loop;
 use GT\Curl\CurlException;
 use GT\Curl\CurlInterface;
 use GT\Curl\CurlMultiInterface;
 use Gt\Http\Header\Parser;
 use Gt\Http\Response;
-use Gt\Promise\Deferred;
+use GT\Promise\Deferred;
 use Psr\Http\Message\UriInterface;
 
 class RequestResolver {

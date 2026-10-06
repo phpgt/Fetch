@@ -1,16 +1,16 @@
 <?php
 namespace GT\Fetch;
 
-use Gt\Async\Loop;
-use Gt\Async\Timer\PeriodicTimer;
-use Gt\Async\Timer\Timer;
+use GT\Async\Loop;
+use GT\Async\Timer\PeriodicTimer;
+use GT\Async\Timer\Timer;
 use GT\Curl\Curl;
 use GT\Curl\CurlMulti;
 use Gt\Http\Response;
 use Gt\Http\Uri;
-use Gt\Promise\Deferred;
-use Gt\Promise\Promise;
-use Gt\Promise\PromiseInterface;
+use GT\Promise\Deferred;
+use GT\Promise\Promise;
+use GT\Promise\PromiseInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\UriInterface;
 
