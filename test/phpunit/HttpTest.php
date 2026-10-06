@@ -76,7 +76,7 @@ class HttpTest extends TestCase {
 		self::assertGreaterThan(count($options), count($actualOptions));
 	}
 
-	/** @runInSeparateProcess */
+	#[\PHPUnit\Framework\Attributes\RunInSeparateProcess]
 	public function testAll() {
 		$http = new Http(
 			[],
@@ -148,7 +148,7 @@ class HttpTest extends TestCase {
 		self::assertInstanceOf(FetchException::class, $actualRejection);
 	}
 
-	/** @runInSeparateProcess */
+	#[\PHPUnit\Framework\Attributes\RunInSeparateProcess]
 	public function testFollowedRedirectOnlyExposesFinalResponseHeaders():void {
 		$sut = new Http(
 			[],
@@ -165,7 +165,7 @@ class HttpTest extends TestCase {
 		self::assertSame("", $response->getHeaderLine("Location"));
 	}
 
-	/** @runInSeparateProcess */
+	#[\PHPUnit\Framework\Attributes\RunInSeparateProcess]
 	public function testAwaitFetch():void {
 		$http = new Http(
 			[],
