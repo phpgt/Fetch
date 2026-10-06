@@ -6,8 +6,8 @@ use GT\Async\Loop;
 use GT\Curl\CurlException;
 use GT\Curl\CurlInterface;
 use GT\Curl\CurlMultiInterface;
-use Gt\Http\Header\Parser;
-use Gt\Http\Response;
+use GT\Http\Header\Parser;
+use GT\Http\Response;
 use GT\Promise\Deferred;
 use Psr\Http\Message\UriInterface;
 
