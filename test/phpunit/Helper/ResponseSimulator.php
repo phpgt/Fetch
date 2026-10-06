@@ -1,7 +1,7 @@
 <?php
 namespace GT\Fetch\Test\Helper;
 
-use GT\Curl\Curl;
+use GT\Curl\CurlInterface;
 
 class ResponseSimulator {
 	const RANDOM_BODY_WORDS = ["pursuit","forest","gravel","timber","wonder","eject","slogan","monkey","construct","earthquake","respect","publish","forward","circle","summer","define","highlight","refuse","salon","theater","lily","earwax","variant","account","resource"];
@@ -25,6 +25,7 @@ class ResponseSimulator {
 
 	static public function start() {
 		self::$started = true;
+		self::$redirectAdded = false;
 		self::$headerBuffer = self::generateHeaders();
 		self::$bodyBuffer = self::generateBody();
 	}
@@ -73,11 +74,24 @@ class ResponseSimulator {
 		return self::$started;
 	}
 
-	static public function sendChunk(Curl $ch):int {
-// TODO: If the URL is test://should-redirect, send the redirect header here
+	static public function sendChunk(CurlInterface $ch):int {
 		$url = $ch->getInfo(CURLINFO_EFFECTIVE_URL);
+		if($url === "test://should-follow-redirect" && !self::$redirectAdded) {
+			self::$headerBuffer = [
+				"HTTP/1.1 303 See Other\r\n",
+				"Content-Type: text/html\r\n",
+				"Location: /redirected\r\n",
+				"\r\n",
+				"HTTP/1.1 200 OK\r\n",
+				"Content-Type: application/json\r\n",
+				"X-Final-Response: true\r\n",
+				"\r\n",
+			];
+			self::$bodyBuffer = "{}";
+			self::$redirectAdded = true;
+		}
 		if($url === "test://should-redirect") {
-			$locationRedirect = "Location: /redirected";
+			$locationRedirect = "Location: /redirected\r\n";
 			if(!self::$redirectAdded) {
 				array_splice(self::$headerBuffer, 1, 0, $locationRedirect);
 				self::$redirectAdded = true;
@@ -88,7 +102,7 @@ class ResponseSimulator {
 
 			call_user_func(
 				self::$headerCallback,
-				$ch,
+				$ch->getHandle(),
 				$data
 			);
 
@@ -100,13 +114,14 @@ class ResponseSimulator {
 
 			call_user_func(
 				self::$bodyCallback,
-				$ch,
+				$ch->getHandle(),
 				$data
 			);
 
 			return 1;
 		}
 		else {
+			self::$started = false;
 			return 0;
 		}
 	}
