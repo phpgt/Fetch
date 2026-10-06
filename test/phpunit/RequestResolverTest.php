@@ -5,7 +5,7 @@ use GT\Fetch\FetchException;
 use GT\Fetch\RequestResolver;
 use GT\Fetch\Test\Helper\NativeHandleTestCurl;
 use GT\Fetch\Test\Helper\TestCurlMulti;
-use Gt\Async\Loop;
+use GT\Async\Loop;
 use GT\Http\Response;
 use PHPUnit\Framework\TestCase;
 use ReflectionMethod;
