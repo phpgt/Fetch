@@ -8,26 +8,27 @@
     "packages": [
         {
             "name": "justinrainbow/json-schema",
-            "version": "6.8.0",
+            "version": "6.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jsonrainbow/json-schema.git",
-                "reference": "89ac92bcfe5d0a8a4433c7b89d394553ae7250cc"
+                "reference": "e54aacc4c0657b3a4af4f628428d2702146828c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jsonrainbow/json-schema/zipball/89ac92bcfe5d0a8a4433c7b89d394553ae7250cc",
-                "reference": "89ac92bcfe5d0a8a4433c7b89d394553ae7250cc",
+                "url": "https://api.github.com/repos/jsonrainbow/json-schema/zipball/e54aacc4c0657b3a4af4f628428d2702146828c6",
+                "reference": "e54aacc4c0657b3a4af4f628428d2702146828c6",
                 "shasum": ""
             },
             "require": {
+                "ext-filter": "*",
                 "ext-json": "*",
                 "marc-mabe/php-enum": "^4.4",
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "3.3.0",
-                "json-schema/json-schema-test-suite": "^23.2",
+                "json-schema/json-schema-test-suite": "dev-main",
                 "marc-mabe/php-enum-phpstan": "^2.0",
                 "phpspec/prophecy": "^1.19",
                 "phpstan/phpstan": "^1.12",
@@ -53,20 +54,9 @@
             ],
             "authors": [
                 {
-                    "name": "Bruno Prieto Reis",
-                    "email": "bruno.p.reis@gmail.com"
-                },
-                {
-                    "name": "Justin Rainbow",
-                    "email": "justin.rainbow@gmail.com"
-                },
-                {
-                    "name": "Igor Wiedler",
-                    "email": "igor@wiedler.ch"
-                },
-                {
-                    "name": "Robert Schönthal",
-                    "email": "seroscho@googlemail.com"
+                    "name": "Danny van der Sluijs",
+                    "email": "danny.vandersluijs@icloud.com",
+                    "role": "Maintainer"
                 }
             ],
             "description": "A library to validate a json schema.",
@@ -77,9 +67,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jsonrainbow/json-schema/issues",
-                "source": "https://github.com/jsonrainbow/json-schema/tree/6.8.0"
+                "source": "https://github.com/jsonrainbow/json-schema/tree/6.13.1"
             },
-            "time": "2026-04-02T12:43:11+00:00"
+            "time": "2026-09-30T07:42:28+00:00"
         },
         {
             "name": "marc-mabe/php-enum",
@@ -205,16 +195,16 @@
         },
         {
             "name": "phpgt/curl",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpgt/Curl.git",
-                "reference": "86338d0be868c775b62250357e8fba47b0dcf5fd"
+                "reference": "fd63a520b0086f4cc34317f9602101056f55bb00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpgt/Curl/zipball/86338d0be868c775b62250357e8fba47b0dcf5fd",
-                "reference": "86338d0be868c775b62250357e8fba47b0dcf5fd",
+                "url": "https://api.github.com/repos/phpgt/Curl/zipball/fd63a520b0086f4cc34317f9602101056f55bb00",
+                "reference": "fd63a520b0086f4cc34317f9602101056f55bb00",
                 "shasum": ""
             },
             "require": {
@@ -255,7 +245,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpgt/Curl/issues",
-                "source": "https://github.com/phpgt/Curl/tree/v3.2.2"
+                "source": "https://github.com/phpgt/Curl/tree/v3.2.3"
             },
             "funding": [
                 {
@@ -263,20 +253,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-04-19T15:25:00+00:00"
+            "time": "2026-06-29T20:06:08+00:00"
         },
         {
             "name": "phpgt/dataobject",
-            "version": "v1.1.1",
+            "version": "v1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpgt/DataObject.git",
-                "reference": "fc1918f2c1a9f3329d8d80bd01f3658cf07961ba"
+                "reference": "4c6b55ae11555f915969734d9002caa201feda99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpgt/DataObject/zipball/fc1918f2c1a9f3329d8d80bd01f3658cf07961ba",
-                "reference": "fc1918f2c1a9f3329d8d80bd01f3658cf07961ba",
+                "url": "https://api.github.com/repos/phpgt/DataObject/zipball/4c6b55ae11555f915969734d9002caa201feda99",
+                "reference": "4c6b55ae11555f915969734d9002caa201feda99",
                 "shasum": ""
             },
             "require": {
@@ -310,7 +300,7 @@
             "description": " Structured, type-safe, immutable data transfer.",
             "support": {
                 "issues": "https://github.com/phpgt/DataObject/issues",
-                "source": "https://github.com/phpgt/DataObject/tree/v1.1.1"
+                "source": "https://github.com/phpgt/DataObject/tree/v1.1.2"
             },
             "funding": [
                 {
@@ -318,7 +308,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-04-21T12:24:50+00:00"
+            "time": "2026-07-25T17:55:14+00:00"
         },
         {
             "name": "phpgt/http",
@@ -439,16 +429,16 @@
         },
         {
             "name": "phpgt/json",
-            "version": "v2.2.1",
+            "version": "v2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpgt/Json.git",
-                "reference": "df697c3fc7b3527ae3a01d3f96b1bfbab80feee2"
+                "reference": "6e39d18f884315916a2b5b0ef1ed9a2ceac1a8e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpgt/Json/zipball/df697c3fc7b3527ae3a01d3f96b1bfbab80feee2",
-                "reference": "df697c3fc7b3527ae3a01d3f96b1bfbab80feee2",
+                "url": "https://api.github.com/repos/phpgt/Json/zipball/6e39d18f884315916a2b5b0ef1ed9a2ceac1a8e7",
+                "reference": "6e39d18f884315916a2b5b0ef1ed9a2ceac1a8e7",
                 "shasum": ""
             },
             "require": {
@@ -483,7 +473,7 @@
             "description": " Structured, type-safe, immutable JSON objects.",
             "support": {
                 "issues": "https://github.com/phpgt/Json/issues",
-                "source": "https://github.com/phpgt/Json/tree/v2.2.1"
+                "source": "https://github.com/phpgt/Json/tree/v2.3.1"
             },
             "funding": [
                 {
@@ -491,7 +481,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-04-21T13:31:54+00:00"
+            "time": "2026-07-15T09:27:37+00:00"
         },
         {
             "name": "phpgt/promise",
@@ -605,16 +595,16 @@
         },
         {
             "name": "phpgt/typesafegetter",
-            "version": "v1.3.3",
+            "version": "v1.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpgt/TypeSafeGetter.git",
-                "reference": "a0d339103828791989cbb81f760d252f3c2f8b8c"
+                "reference": "729261c04b76febaa21a921a3719f625abe9b55e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpgt/TypeSafeGetter/zipball/a0d339103828791989cbb81f760d252f3c2f8b8c",
-                "reference": "a0d339103828791989cbb81f760d252f3c2f8b8c",
+                "url": "https://api.github.com/repos/phpgt/TypeSafeGetter/zipball/729261c04b76febaa21a921a3719f625abe9b55e",
+                "reference": "729261c04b76febaa21a921a3719f625abe9b55e",
                 "shasum": ""
             },
             "require": {
@@ -629,6 +619,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
+                    "GT\\TypeSafeGetter\\": "./src",
                     "Gt\\TypeSafeGetter\\": "./src"
                 }
             },
@@ -645,7 +636,7 @@
             "description": "An interface for objects that expose type-safe getter methods.",
             "support": {
                 "issues": "https://github.com/phpgt/TypeSafeGetter/issues",
-                "source": "https://github.com/phpgt/TypeSafeGetter/tree/v1.3.3"
+                "source": "https://github.com/phpgt/TypeSafeGetter/tree/v1.3.4"
             },
             "funding": [
                 {
@@ -653,7 +644,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-10T22:28:01+00:00"
+            "time": "2026-05-04T15:53:13+00:00"
         },
         {
             "name": "psr/http-message",
@@ -2845,19 +2836,20 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "4.0.1",
+            "version": "4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "0525c73950de35ded110cffafb9892946d7771b5"
+                "reference": "bbdc3d0532623e21838b7041a4364383a8126f96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/0525c73950de35ded110cffafb9892946d7771b5",
-                "reference": "0525c73950de35ded110cffafb9892946d7771b5",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/bbdc3d0532623e21838b7041a4364383a8126f96",
+                "reference": "bbdc3d0532623e21838b7041a4364383a8126f96",
                 "shasum": ""
             },
             "require": {
+                "ext-libxml": "*",
                 "ext-simplexml": "*",
                 "ext-tokenizer": "*",
                 "ext-xmlwriter": "*",
@@ -2865,6 +2857,10 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.4.0 || ^9.3.4 || ^10.5.32 || 11.3.3 - 11.5.28 || ^11.5.31"
+            },
+            "suggest": {
+                "ext-iconv": "For accurate character length calculation when the checked files contain multi-byte characters.",
+                "ext-pcntl": "For parallel processing support via the --parallel CLI option."
             },
             "bin": [
                 "bin/phpcbf",
@@ -2920,7 +2916,7 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2025-11-10T16:43:36+00:00"
+            "time": "2026-08-06T02:45:27+00:00"
         },
         {
             "name": "symfony/config",
