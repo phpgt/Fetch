@@ -98,6 +98,7 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          slug: ${{ github.repository }}
 
   phpstan:
     runs-on: ubuntu-latest
@@ -140,12 +141,11 @@ jobs:
         run: tar -xvf /tmp/github-actions/build.tar ./
 
       - name: PHP Mess Detector
-        uses: php-actions/phpmd@v1
+        uses: php-actions/composer@v6
         with:
           php_version: ${{ matrix.php }}
-          path: src/
-          output: text
-          ruleset: phpmd.xml
+          command: exec
+          args: -- phpmd src/ text phpmd.xml
 
   phpcs:
     runs-on: ubuntu-latest
