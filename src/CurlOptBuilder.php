@@ -73,9 +73,17 @@ class CurlOptBuilder {
 		$rawHeaders = [];
 
 		foreach($headers as $key => $value) {
+			if(!preg_match('/^[!#$%&\'*+\-.^_`|~0-9A-Za-z]+$/D', (string)$key)) {
+				throw new FetchException("Invalid header name");
+			}
+
 			$headerLine = "$key: ";
 			if(!is_array($value)) {
 				$value = [$value];
+			}
+
+			foreach($value as $headerValue) {
+				$this->validateHeaderValue($headerValue);
 			}
 
 			$headerLine .= implode(", ", $value);
@@ -83,6 +91,12 @@ class CurlOptBuilder {
 		}
 
 		$this->curlOptArray[CURLOPT_HTTPHEADER] = $rawHeaders;
+	}
+
+	protected function validateHeaderValue(string $value):void {
+		if(strpbrk($value, "\r\n\0") !== false) {
+			throw new FetchException("Invalid header value");
+		}
 	}
 
 	/**
@@ -150,6 +164,8 @@ class CurlOptBuilder {
 	 * or a URL.
 	 */
 	protected function setReferrer(string $value):void {
+		$this->validateHeaderValue($value);
+
 		switch(strtolower($value)) {
 		case "no-referrer":
 			$this->curlOptArray[CURLOPT_REFERER] = null;

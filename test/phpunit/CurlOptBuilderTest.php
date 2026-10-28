@@ -3,11 +3,65 @@ namespace GT\Fetch\Test;
 
 use GT\Fetch\AbortController;
 use GT\Fetch\CurlOptBuilder;
+use GT\Fetch\FetchException;
 use GT\Fetch\NotAvailableServerSideException;
 use GT\Fetch\UnknownCurlOptException;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\RequestInterface;
 
 class CurlOptBuilderTest extends TestCase {
+	/** @return array<string, array{array<string, mixed>}> */
+	public static function invalidHeaderProvider():array {
+		$cases = [];
+		foreach(["\r", "\n", "\r\n", "\0"] as $character) {
+			$label = bin2hex($character);
+			$cases["header name $label"] = [["headers" => ["X-$character-Injected" => "1"]]];
+			$cases["header value $label"] = [["headers" => ["X-User" => "alice{$character}X-Injected: 1"]]];
+			$cases["array value $label"] = [["headers" => ["X-User" => ["alice", "bob{$character}X-Injected: 1"]]]];
+			$cases["referrer $label"] = [["referrer" => "http://example.com/{$character}X-Injected: 1"]];
+		}
+		foreach(["", "X User", "X:User", "X\tUser", "X( User)", "X-\x80"] as $name) {
+			$cases["invalid name " . bin2hex($name)] = [["headers" => [$name => "1"]]];
+		}
+		return $cases;
+	}
+
+	#[DataProvider("invalidHeaderProvider")]
+	public function testRejectInvalidHeaders(array $init):void {
+		self::expectException(FetchException::class);
+		new CurlOptBuilder(null, $init);
+	}
+
+	/** @return array<string, array{array<string, mixed>}> */
+	public static function invalidRequestHeaderProvider():array {
+		return array_filter(self::invalidHeaderProvider(), fn(array $case) => isset($case[0]["headers"]));
+	}
+
+	#[DataProvider("invalidRequestHeaderProvider")]
+	public function testRejectInvalidRequestHeaders(array $init):void {
+		$request = self::createStub(RequestInterface::class);
+		$request->method("getMethod")->willReturn("GET");
+		$request->method("getHeaders")->willReturn($init["headers"]);
+		self::expectException(FetchException::class);
+		new CurlOptBuilder($request);
+	}
+
+	public function testValidHeaderCharacters():void {
+		$name = "X-!#$%&'*+-.^_`|~0123456789";
+		$sut = new CurlOptBuilder(null, [
+			"headers" => [$name => ["value\twith spaces", "", "\x80"]],
+			"referrer" => "https://example.com/path?query=value",
+		]);
+		self::assertSame([
+			"$name: value\twith spaces, , \x80",
+		], $sut->asCurlOptArray()[CURLOPT_HTTPHEADER]);
+		self::assertSame(
+			"https://example.com/path?query=value",
+			$sut->asCurlOptArray()[CURLOPT_REFERER],
+		);
+	}
+
 	public function testInvalidKey() {
 		self::expectException(UnknownCurlOptException::class);
 		$sut = new CurlOptBuilder(null, [
